@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<script src="../index.js"></script>
+<link rel="stylesheet" href="../index.css"/>
+<style>
+body { line-height: 1.6; margin: 0 1em; }
+p { text-align: justify; }
+</style>
+</head>
+<body>
+<h1>Test page</h1>
+<p>Here is a text.</p>
+<p id="longParagraph"></p>
+<script>
+const largeTooltip = LargeTooltip.init();
+
+const longParagraph = document.getElementById('longParagraph');
+
+for (let i = 0; i < 200; i++) {
+  const outerSpan = document.createElement('span');
+  outerSpan.innerText = `${i}`;
+
+  const div = document.createElement('div');
+
+  let p = document.createElement('p');
+  p.innerText = `This is ${i} in the tooltip`;
+  div.appendChild(p);
+
+  p = document.createElement('p');
+  p.innerText = 'This is a very long sentence. This is a very long sentence. This is a very long sentence. This is a very long sentence. This is a very long sentence.';
+  div.appendChild(p);
+
+  // show innerSpan with the position relative to outerSpan
+  largeTooltip.addTooltip(div, outerSpan);
+
+  longParagraph.appendChild(outerSpan);
+  longParagraph.appendChild(document.createTextNode(' '));
+}
+</script>
+</body>
+</html>
