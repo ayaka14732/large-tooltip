@@ -15,29 +15,15 @@ export function init() {
   const divInner = document.createElement('div');
   divInner.classList.add('large-tooltip-inner');
   divOuter.appendChild(divInner);
-  divInner.style.visibility = 'hidden';
+  divInner.classList.add('large-tooltip-hidden');
   document.body.appendChild(divOuter);
-
-  document.addEventListener('click', () => {
-    divInner.style.visibility = 'hidden';
-  }, false);
-
-  // do not hide `divInner` if clicked on `divInner`
-  divInner.addEventListener('click', (event) => {
-    event.stopPropagation();
-  }, false);
 
   return {
     addTooltip: (contentNode, relativeToNode) => {
-      relativeToNode.addEventListener('mouseover', () => {
+      relativeToNode.addEventListener('mouseenter', () => {
         const relativeToNodeBox = relativeToNode.getBoundingClientRect();
         const relativeToNodeTop = relativeToNodeBox.top + window.pageYOffset;
         const relativeToNodeLeft = relativeToNodeBox.left + window.pageXOffset;
-
-        // do not hide `divInner` if clicked on `relativeToNode`
-        relativeToNode.addEventListener('click', (event) => {
-          event.stopPropagation();
-        }, false);
 
         divInner.innerHTML = ''; // clear original contents
         divInner.appendChild(contentNode);
@@ -46,7 +32,7 @@ export function init() {
         const divInnerHeight = divInnerBox.height;
         const divInnerWidth = divInnerBox.width;
 
-        const targetTop = relativeToNodeTop - divInnerHeight - 4; // elevate 4px
+        const targetTop = relativeToNodeTop - divInnerHeight;
 
         let targetLeft = relativeToNodeLeft - (divInnerWidth / 2); // align center by default
         const oneEmSize = parseFloat(getComputedStyle(document.body).fontSize);
@@ -62,7 +48,11 @@ export function init() {
         divInner.style.top = targetTop + 'px';
         divInner.style.left = targetLeft + 'px';
 
-        divInner.style.visibility = 'visible';
+        divInner.classList.remove('large-tooltip-hidden');
+      }, false);
+
+      relativeToNode.addEventListener('mouseleave', () => {
+        divInner.classList.add('large-tooltip-hidden');
       }, false);
     },
   };

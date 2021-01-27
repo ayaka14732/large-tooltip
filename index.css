@@ -11,3 +11,11 @@
 
 	position: absolute;
 }
+
+.large-tooltip-hidden {
+	visibility: hidden;
+}
+
+.large-tooltip-inner:hover {
+	visibility: visible;
+}
