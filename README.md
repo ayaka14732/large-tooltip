@@ -18,7 +18,7 @@ npm install --save large-tooltip
 ```
 
 ```javascript
-import LargeTooltip from 'large-tooltip';
+import LargeTooltip from "large-tooltip";
 ```
 
 ## Usage
@@ -29,8 +29,8 @@ import LargeTooltip from 'large-tooltip';
 
 ```javascript
 const largeTooltip = LargeTooltip.init();
-const hoverMe = document.getElementById('hoverMe');
-const p = document.createElement('p');
-p.innerText = 'This is the text in the tooltip!';
+const hoverMe = document.getElementById("hoverMe");
+const p = document.createElement("p");
+p.innerText = "This is the text in the tooltip!";
 largeTooltip.addTooltip(p, hoverMe); // add `p` as a tooltip of `hoverMe`
 ```
