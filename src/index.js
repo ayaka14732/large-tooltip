@@ -10,7 +10,12 @@ function getPageWidth() {
 }
 
 export function init() {
+  if (document.getElementById('large-tooltip-outer') != null) {
+    console.error('large-tooltip have already been initialized.');
+  }
+
   const divOuter = document.createElement('div');
+  divOuter.id = 'large-tooltip-outer';
   divOuter.classList.add('large-tooltip-outer');
   const divInner = document.createElement('div');
   divInner.classList.add('large-tooltip-inner');
