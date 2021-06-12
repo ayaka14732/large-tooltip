@@ -7,8 +7,8 @@ Create a selectable large tooltip on the web page
 In HTML:
 
 ```html
-<script src="https://cdn.jsdelivr.net/npm/large-tooltip@0.0.2/index.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/large-tooltip@0.0.2/index.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/large-tooltip@0.0.3/index.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/large-tooltip@0.0.3/index.min.css" />
 ```
 
 Or if you are using Node.js:
